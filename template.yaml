@@ -79,12 +79,11 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t2.micro
-      ImageId: ami-0b28346b270c7b165  # Amazon Linux 2 AMI in ap-northeast-1
-      KeyName: !Ref MyKeyPair  # インポートしたキーペアを参照
-      SubnetId: !Ref MyPublicSubnet
-      SecurityGroupIds: 
-        - !Ref MySecurityGroup
-      AssociatePublicIpAddress: true
-      Tags:
-        - Key: Name
-          Value: MyEC2Instance
+      ImageId: ami-0b28346b270c7b165
+      KeyName: !Ref MyKeyPair
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: 0
+          SubnetId: !Ref MyPublicSubnet
+          GroupSet: 
+            - !Ref MySecurityGroup
