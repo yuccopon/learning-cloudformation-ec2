@@ -1,3 +1,5 @@
+## 実行する際はshellに以下を入力する
+
 ```powershell
 aws cloudformation deploy `
   --template-file template.yaml `
